@@ -11,14 +11,14 @@ import RxSwift
 class MainViewModel {
     
     var toDosRepo = ToDosDaoRepository()
-    var toDosList = BehaviorSubject<[ToDos]>(value: [ToDos]())
+    var toDosList = BehaviorSubject<[ToDosModel]>(value: [ToDosModel]())
     
     init(){ //Sınıftan nesne oluşturulduğunda Çalışır.
         toDosList = toDosRepo.toDosList // 
     }
     
-    func delete(id:Int){
-        toDosRepo.delete(id: id)
+    func delete(toDo:ToDosModel){
+        toDosRepo.delete(toDo: toDo)
         loadToDos()
     }
    

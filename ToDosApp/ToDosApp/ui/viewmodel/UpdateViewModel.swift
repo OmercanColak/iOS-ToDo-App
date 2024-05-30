@@ -10,7 +10,7 @@ import Foundation
 class UpdateViewModel {
     var toDosRepo = ToDosDaoRepository()
     
-    func update(id:Int,name:String){
-        toDosRepo.update(id: id, name: name)
+    func update(toDo:ToDosModel,name:String){
+        toDosRepo.update(toDo: toDo, name: name)
     }
 }

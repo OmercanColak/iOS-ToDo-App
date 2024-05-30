@@ -10,7 +10,7 @@ import UIKit
 class MainScreen: UIViewController{
     @IBOutlet weak var searchBar: UISearchBar!
     @IBOutlet weak var toDosTableView: UITableView!
-    var toDosList = [ToDos]()
+    var toDosList = [ToDosModel]()
     
     var viewModel = MainViewModel()
     
@@ -57,7 +57,7 @@ class MainScreen: UIViewController{
         print("prepare çalıştı")
         if segue.identifier == "toUpdate" {
             print("toUpdate çalıştı")
-            if let toDo = sender as? ToDos {//Downcasting(Superclass > Subclass)
+            if let toDo = sender as? ToDosModel {//Downcasting(Superclass > Subclass)
                 let destinationVC = segue.destination as! UpdateScreen
                 destinationVC.toDo = toDo
             }
@@ -69,7 +69,12 @@ class MainScreen: UIViewController{
 
 extension MainScreen : UISearchBarDelegate {
     func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
-        viewModel.search(searchText: searchText)
+        
+        if searchText == "" {
+            viewModel.loadToDos()
+        }else{
+            viewModel.search(searchText: searchText)
+        }
     }
 }
 
@@ -77,15 +82,14 @@ extension MainScreen : UITableViewDelegate, UITableViewDataSource, CellProtocol 
     
     func buttonDeleteClicked(indexPath: IndexPath) {
         let toDo = self.toDosList[indexPath.row]
-        
-        
+
         let alert = UIAlertController(title: "Delete Process", message: "Are you sure do you want to delete  \(toDo.name!) ? ", preferredStyle: .alert)
         
         let cancelAction = UIAlertAction(title: "Cancel", style: .cancel)
         alert.addAction(cancelAction)
         
         let yesAction = UIAlertAction(title: "Yes", style: .destructive){ action in
-            self.viewModel.delete(id: toDo.id!)
+            self.viewModel.delete(toDo: toDo)
         }
         alert.addAction(yesAction)
         
@@ -122,6 +126,18 @@ extension MainScreen : UITableViewDelegate, UITableViewDataSource, CellProtocol 
         let deleteAction = UIContextualAction(style: .destructive, title: "Delete"){
             contextualAction,view,bool in
             
+            let toDo = self.toDosList[indexPath.row]
+            let alert = UIAlertController(title: "Delete Process", message: "Are you sure do you want to delete  \(toDo.name!) ? ", preferredStyle: .alert)
+            
+            let cancelAction = UIAlertAction(title: "Cancel", style: .cancel)
+            alert.addAction(cancelAction)
+            
+            let yesAction = UIAlertAction(title: "Yes", style: .destructive){ action in
+                self.viewModel.delete(toDo: toDo)
+            }
+            alert.addAction(yesAction)
+            
+            self.present(alert, animated: true)
         }
         return UISwipeActionsConfiguration(actions: [deleteAction])
     }
