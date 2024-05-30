@@ -28,5 +28,7 @@ class UpdateScreen: UIViewController {
         if let t = toDo,let name = textFieldName.text {
             viewModel.update(toDo: t, name: name)
         }
+        self.navigationController?.popViewController(animated: true)
+
     }
 }

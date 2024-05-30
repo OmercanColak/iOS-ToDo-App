@@ -22,6 +22,8 @@ class SaveScreen: UIViewController {
         if let name = textFieldName.text {//Optional binding ( if let )
             viewModel.save(name: name)
         }
+        self.navigationController?.popViewController(animated: true)
+
         
     }
 }
