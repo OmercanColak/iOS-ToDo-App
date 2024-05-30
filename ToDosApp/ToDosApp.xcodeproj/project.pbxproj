@@ -7,6 +7,11 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		0E33D6E02C031E3800A1F52A /* ToDosDaoRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E33D6DF2C031E3800A1F52A /* ToDosDaoRepository.swift */; };
+		0E33D6E32C031EA600A1F52A /* MainViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E33D6E22C031EA600A1F52A /* MainViewModel.swift */; };
+		0E33D6E52C031EB400A1F52A /* SaveViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E33D6E42C031EB400A1F52A /* SaveViewModel.swift */; };
+		0E33D6E72C031EBF00A1F52A /* UpdateViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E33D6E62C031EBF00A1F52A /* UpdateViewModel.swift */; };
+		0E33D6FF2C03280100A1F52A /* RxSwift in Frameworks */ = {isa = PBXBuildFile; productRef = 0E33D6FE2C03280100A1F52A /* RxSwift */; };
 		0EC4534A2C0227DD006D655F /* ToDoCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0EC453492C0227DD006D655F /* ToDoCell.swift */; };
 		794238452C01BBFA003D4A16 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 794238442C01BBFA003D4A16 /* AppDelegate.swift */; };
 		794238472C01BBFA003D4A16 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 794238462C01BBFA003D4A16 /* SceneDelegate.swift */; };
@@ -21,6 +26,10 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		0E33D6DF2C031E3800A1F52A /* ToDosDaoRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ToDosDaoRepository.swift; sourceTree = "<group>"; };
+		0E33D6E22C031EA600A1F52A /* MainViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainViewModel.swift; sourceTree = "<group>"; };
+		0E33D6E42C031EB400A1F52A /* SaveViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SaveViewModel.swift; sourceTree = "<group>"; };
+		0E33D6E62C031EBF00A1F52A /* UpdateViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UpdateViewModel.swift; sourceTree = "<group>"; };
 		0EC453492C0227DD006D655F /* ToDoCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ToDoCell.swift; sourceTree = "<group>"; };
 		794238412C01BBFA003D4A16 /* ToDosApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ToDosApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		794238442C01BBFA003D4A16 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -41,17 +50,89 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				0E33D6FF2C03280100A1F52A /* RxSwift in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		0E33D6D92C031CE200A1F52A /* ui */ = {
+			isa = PBXGroup;
+			children = (
+				0E33D6E12C031E7900A1F52A /* viewmodel */,
+				0E33D6DD2C031D3E00A1F52A /* tableview */,
+				0E33D6DC2C031D2800A1F52A /* view */,
+			);
+			path = ui;
+			sourceTree = "<group>";
+		};
+		0E33D6DA2C031CED00A1F52A /* data */ = {
+			isa = PBXGroup;
+			children = (
+				0E33D6DE2C031DF400A1F52A /* repo */,
+				0E33D6DB2C031D0800A1F52A /* entity */,
+			);
+			path = data;
+			sourceTree = "<group>";
+		};
+		0E33D6DB2C031D0800A1F52A /* entity */ = {
+			isa = PBXGroup;
+			children = (
+				7942385F2C02033B003D4A16 /* ToDos.swift */,
+			);
+			path = entity;
+			sourceTree = "<group>";
+		};
+		0E33D6DC2C031D2800A1F52A /* view */ = {
+			isa = PBXGroup;
+			children = (
+				794238482C01BBFA003D4A16 /* MainScreen.swift */,
+				794238582C01CBBD003D4A16 /* SaveScreen.swift */,
+				7942385A2C01CC59003D4A16 /* UpdateScreen.swift */,
+			);
+			path = view;
+			sourceTree = "<group>";
+		};
+		0E33D6DD2C031D3E00A1F52A /* tableview */ = {
+			isa = PBXGroup;
+			children = (
+				0EC453492C0227DD006D655F /* ToDoCell.swift */,
+			);
+			path = tableview;
+			sourceTree = "<group>";
+		};
+		0E33D6DE2C031DF400A1F52A /* repo */ = {
+			isa = PBXGroup;
+			children = (
+				0E33D6DF2C031E3800A1F52A /* ToDosDaoRepository.swift */,
+			);
+			path = repo;
+			sourceTree = "<group>";
+		};
+		0E33D6E12C031E7900A1F52A /* viewmodel */ = {
+			isa = PBXGroup;
+			children = (
+				0E33D6E22C031EA600A1F52A /* MainViewModel.swift */,
+				0E33D6E42C031EB400A1F52A /* SaveViewModel.swift */,
+				0E33D6E62C031EBF00A1F52A /* UpdateViewModel.swift */,
+			);
+			path = viewmodel;
+			sourceTree = "<group>";
+		};
+		0E33D6FD2C03280100A1F52A /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 		794238382C01BBFA003D4A16 = {
 			isa = PBXGroup;
 			children = (
 				794238432C01BBFA003D4A16 /* ToDosApp */,
 				794238422C01BBFA003D4A16 /* Products */,
+				0E33D6FD2C03280100A1F52A /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -68,11 +149,8 @@
 			children = (
 				794238442C01BBFA003D4A16 /* AppDelegate.swift */,
 				794238462C01BBFA003D4A16 /* SceneDelegate.swift */,
-				794238482C01BBFA003D4A16 /* MainScreen.swift */,
-				794238582C01CBBD003D4A16 /* SaveScreen.swift */,
-				7942385A2C01CC59003D4A16 /* UpdateScreen.swift */,
-				7942385F2C02033B003D4A16 /* ToDos.swift */,
-				0EC453492C0227DD006D655F /* ToDoCell.swift */,
+				0E33D6DA2C031CED00A1F52A /* data */,
+				0E33D6D92C031CE200A1F52A /* ui */,
 				7942385C2C01D6E7003D4A16 /* Fonts */,
 				7942384A2C01BBFA003D4A16 /* Main.storyboard */,
 				7942384D2C01BBFB003D4A16 /* Assets.xcassets */,
@@ -106,6 +184,9 @@
 			dependencies = (
 			);
 			name = ToDosApp;
+			packageProductDependencies = (
+				0E33D6FE2C03280100A1F52A /* RxSwift */,
+			);
 			productName = ToDosApp;
 			productReference = 794238412C01BBFA003D4A16 /* ToDosApp.app */;
 			productType = "com.apple.product-type.application";
@@ -134,6 +215,9 @@
 				Base,
 			);
 			mainGroup = 794238382C01BBFA003D4A16;
+			packageReferences = (
+				0E33D6E82C0327C700A1F52A /* XCRemoteSwiftPackageReference "RxSwift" */,
+			);
 			productRefGroup = 794238422C01BBFA003D4A16 /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -162,13 +246,17 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				0E33D6E02C031E3800A1F52A /* ToDosDaoRepository.swift in Sources */,
+				0E33D6E72C031EBF00A1F52A /* UpdateViewModel.swift in Sources */,
 				7942385B2C01CC59003D4A16 /* UpdateScreen.swift in Sources */,
 				794238492C01BBFA003D4A16 /* MainScreen.swift in Sources */,
 				0EC4534A2C0227DD006D655F /* ToDoCell.swift in Sources */,
 				794238452C01BBFA003D4A16 /* AppDelegate.swift in Sources */,
 				794238592C01CBBD003D4A16 /* SaveScreen.swift in Sources */,
 				794238472C01BBFA003D4A16 /* SceneDelegate.swift in Sources */,
+				0E33D6E52C031EB400A1F52A /* SaveViewModel.swift in Sources */,
 				794238602C02033B003D4A16 /* ToDos.swift in Sources */,
+				0E33D6E32C031EA600A1F52A /* MainViewModel.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -391,6 +479,25 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		0E33D6E82C0327C700A1F52A /* XCRemoteSwiftPackageReference "RxSwift" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/ReactiveX/RxSwift.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 6.7.1;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		0E33D6FE2C03280100A1F52A /* RxSwift */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 0E33D6E82C0327C700A1F52A /* XCRemoteSwiftPackageReference "RxSwift" */;
+			productName = RxSwift;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = 794238392C01BBFA003D4A16 /* Project object */;
 }

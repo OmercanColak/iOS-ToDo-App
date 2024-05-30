@@ -12,6 +12,8 @@ class MainScreen: UIViewController{
     @IBOutlet weak var toDosTableView: UITableView!
     var toDosList = [ToDos]()
     
+    var viewModel = MainViewModel()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         self.navigationItem.title = "ToDos"
@@ -20,19 +22,18 @@ class MainScreen: UIViewController{
         searchBar.delegate = self
         toDosTableView.delegate = self
         toDosTableView.dataSource = self
-        
-        loadToDos()
-        
-        
+    
+        _ = viewModel.toDosList.subscribe(onNext: {list in
+            self.toDosList = list
+            self.toDosTableView.reloadData()
+        })
     }
     
-    func loadToDos(){
-        let toDo1 = ToDos(id: 1, name: "Spor")
-        let toDo2 = ToDos(id: 2, name: "Ödev")
-        let toDo3 = ToDos(id: 3, name: "Alışveriş")
-        toDosList.append(toDo1)
-        toDosList.append(toDo2)
-        toDosList.append(toDo3)
+    override func viewWillAppear(_ animated: Bool) {
+        //Sayfa her göründüğüne çalışır.
+        //Bu sayfaya geri dönüldüğünde de çalışır.!
+        viewModel.loadToDos()
+        
     }
     
     func setupTheme(){
@@ -68,7 +69,7 @@ class MainScreen: UIViewController{
 
 extension MainScreen : UISearchBarDelegate {
     func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
-        print("ToDo Search : \(searchText)")
+        viewModel.search(searchText: searchText)
     }
 }
 
@@ -84,7 +85,7 @@ extension MainScreen : UITableViewDelegate, UITableViewDataSource, CellProtocol 
         alert.addAction(cancelAction)
         
         let yesAction = UIAlertAction(title: "Yes", style: .destructive){ action in
-            print("ToDo Delete : \(toDo.id!)")
+            self.viewModel.delete(id: toDo.id!)
         }
         alert.addAction(yesAction)
         

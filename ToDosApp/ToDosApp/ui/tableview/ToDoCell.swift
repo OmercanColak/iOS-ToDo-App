@@ -29,7 +29,7 @@ class ToDoCell: UITableViewCell {
     //Silebilmek için index numarası gerekiyor.
     //MainScreen ve bura arasında köprü lazım
     @IBAction func buttonDelete(_ sender: Any) {
-        print("Delete button Clicked")
+       // print("Delete button Clicked")
         cellProtocol?.buttonDeleteClicked(indexPath: indexPath!)
     }
     

@@ -12,6 +12,8 @@ class UpdateScreen: UIViewController {
     
     var toDo:ToDos?
     
+    var viewModel = UpdateViewModel()
+    
     override func viewDidLoad() {//Bir kere
         super.viewDidLoad()
         self.navigationItem.title = "Update Screen"
@@ -24,11 +26,7 @@ class UpdateScreen: UIViewController {
     
     @IBAction func buttonUpdate(_ sender: Any) {
         if let t = toDo,let name = textFieldName.text {
-            update(id: t.id!, name: name)
+            viewModel.update(id: t.id!, name: name)
         }
-    }
-    
-    func update(id:Int,name:String){
-       print("ToDo Update : \(id) - \(name)")
     }
 }

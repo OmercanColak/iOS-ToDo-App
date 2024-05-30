@@ -10,6 +10,9 @@ import UIKit
 class SaveScreen: UIViewController {
     @IBOutlet weak var textFieldName: UITextField!
     
+    
+    var viewModel = SaveViewModel()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         self.navigationItem.title = "Save Screen"
@@ -17,11 +20,7 @@ class SaveScreen: UIViewController {
     
     @IBAction func buttonSave(_ sender: Any) {
         if let name = textFieldName.text {//Optional binding ( if let )
-            save(name: name)
+            viewModel.save(name: name)
         }
-    }
-    
-    func save(name:String){
-        print("ToDo Save : \(name)")
     }
 }
